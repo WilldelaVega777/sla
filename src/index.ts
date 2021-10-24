@@ -1,6 +1,6 @@
-// Import stylesheets
-import './style.css';
+export const salutation = (pName: string) => {
+    return `Hello ${pName}`
+}
 
-// Write TypeScript code!
-const appDiv: HTMLElement = document.getElementById('app');
-appDiv.innerHTML = '<h1>TypeScript Starter - sla</h1>';
+console.log(salutation('Alison'))
+
