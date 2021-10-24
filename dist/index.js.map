@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.ts"],"names":[],"mappings":";AAIA,aAAA,OAAA,eAAA,QAAA,aAAA,CAAA,OAAA,IAAA,QAAA,gBAAA,EAJa,QAAA,WAAa,SAAC,GACP,MAAA,SAAA,OAAA,IAGpB,QAAQ,IAAI,QAAA,WAAW","file":"index.js","sourceRoot":"../src","sourcesContent":["export const salutation = (pName: string) => {\n    return `Hello ${pName}`\n}\n\nconsole.log(salutation('Alison'))\n\n"]}
