@@ -1,8 +1,9 @@
 //-------------------------------------------------------------------------
 // Interface Section
 //-------------------------------------------------------------------------
-export interface IResult
+export interface IReference
 {
-    deviceId: string
-    result: string
+    temperature: number
+    humidity: number
+    co: number
 }

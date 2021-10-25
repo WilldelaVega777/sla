@@ -1,33 +1,43 @@
 //-------------------------------------------------------------------------
 // Imports Section
 //-------------------------------------------------------------------------
-import { AbstractSensor }       from '../base/AbstractSensor'
-import { ILog }                 from '../interfaces/ILog'
+import { AbstractSensor }       from '../../base/AbstractSensor'
+import { ILog }                 from '../../interfaces/ILog'
+import { Operations }           from '../helpers/Operations'
 
 //-------------------------------------------------------------------------
 // Class Section
 //-------------------------------------------------------------------------
-export class Higrometer extends AbstractSensor
+export class CODetector extends AbstractSensor
 {
     //---------------------------------------------------------------------
-    // Protected Fields Section
+    // Private Fields Section
     //---------------------------------------------------------------------
-    protected _logData: ILog
+    private _logData: ILog
+    private _reference: number
+    private _operations: Operations
 
     //---------------------------------------------------------------------
     // Constructor Method Section
     //---------------------------------------------------------------------
-    constructor(pLog: ILog)
+    constructor(pLog: ILog, pReference: number)
     {
         super(pLog)
         this._logData = pLog
+        this._reference = pReference
+        this._operations = Operations.getInstance()
     }
 
     //---------------------------------------------------------------------
-    // Protected Methods Section
+    // Public Methods Section
     //---------------------------------------------------------------------
-    protected override getResultValue(): string
+    public evaluate()
     {
-        return 'keep'
+        const result = this._operations.isWithinTolerance(
+              this._reference,
+              this._operations.mean(this._logData.entries.map(entry => entry.value)),
+              3
+         )
+        return (result ? 'keep' : 'discard')
     }
 }

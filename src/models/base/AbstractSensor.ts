@@ -3,13 +3,13 @@
 //-------------------------------------------------------------------------
 import { ILog }             from '../interfaces/ILog'
 import { ILogEntry }        from '../interfaces/ILogEntry'
-import { IResult }          from '../interfaces/IResult'
 
 //-------------------------------------------------------------------------
 // Class Section
 //-------------------------------------------------------------------------
 export abstract class AbstractSensor
 {
+    [x: string]: any;
     //---------------------------------------------------------------------
     // Private Fields Section
     //---------------------------------------------------------------------
@@ -25,19 +25,13 @@ export abstract class AbstractSensor
     //---------------------------------------------------------------------
     // Public Methods Section
     //---------------------------------------------------------------------
-    public getResult(): IResult {
-        return {
-            deviceId: this._log.deviceId,
-            result: this.getResultValue()
-        }
-    }
-
-    //---------------------------------------------------------------------
-    // Protected Methods Section
-    //---------------------------------------------------------------------
-    protected getResultValue(): string
+    public getDeviceId(): string
     {
-        let result: string = 'keep'
-        return result
+        return this._log.deviceId
+    }
+    //---------------------------------------------------------------------
+    public evaluate(): string
+    {
+        return "keep"
     }
 }
