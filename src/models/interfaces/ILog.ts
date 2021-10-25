@@ -1,15 +1,14 @@
 //-------------------------------------------------------------------------
 // Imports Section
 //-------------------------------------------------------------------------
-import { evaluateLogFile }       from '../index'
-import { testData }              from '../data/test-data';
+import { ILogEntry } from './ILogEntry';
 
 //-------------------------------------------------------------------------
-// Test Definition Section
+// Interface Section
 //-------------------------------------------------------------------------
-it(
-    'checks Salutation() returns correctly',
-    () => {
-        expect(evaluateLogFile(testData).length).toBeGreaterThan(0)
-    }
-)
+export interface ILog
+{
+    deviceType: string
+    deviceId: string
+    entries: ILogEntry[]
+}
